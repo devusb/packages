@@ -77,3 +77,7 @@ packages:
     latestVersion: v2.15.3+1
     name: sealed-secrets
     shortDescription: A Kubernetes controller and tool for one-way encrypted Secrets
+  - iconUrl: https://avatars.githubusercontent.com/u/48932923
+    latestVersion: v1.70.0
+    name: tailscale-operator
+    shortDescription: A WireGuard-based app that makes secure, private networks easy for teams of any scale

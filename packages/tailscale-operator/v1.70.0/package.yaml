@@ -1,0 +1,44 @@
+# yaml-language-server: $schema=https://glasskube.dev/schemas/v1/package-manifest.json
+
+name: tailscale-operator
+shortDescription: A WireGuard-based app that makes secure, private networks easy for teams of any scale
+longDescription: >
+  Connect directly to your Kubernetes cluster’s control plane for debugging, access API resources without going through the public internet, securely reach databases and other non-Kubernetes services from your Kubernetes clusters, and enable cross-cluster connectivity, simply and securely via the magic of Tailscale.
+iconUrl: https://avatars.githubusercontent.com/u/48932923
+defaultNamespace: tailscale
+helm:
+  chartName: tailscale-operator
+  chartVersion: 1.70.0
+  repositoryUrl: https://pkgs.tailscale.com/helmcharts
+  values:
+    oauth: {}
+valueDefinitions:
+  clientID:
+    type: 'text'
+    metadata:
+      label: 'OAuth Client ID'
+      description: 'OAuth client ID for authentication with Tailscale'
+    constraints:
+      required: true
+    targets:
+      - chartName: tailscale-operator
+        patch:
+          op: add
+          path: /oauth/clientId
+  clientSecret:
+    type: 'text'
+    metadata:
+      label: 'OAuth Client Secret'
+      description: 'OAuth client secret for authentication with Tailscale'
+    constraints:
+      required: true
+    targets:
+      - chartName: tailscale-operator
+        patch:
+          op: add
+          path: /oauth/clientSecret
+references:
+  - label: GitHub
+    url: https://github.com/tailscale/tailscale
+  - label: Website
+    url: https://tailscale.com
